@@ -12,6 +12,7 @@ namespace EventMaker.Common
     class MessageBox
     {
         //fdsfjfgfhkfgfgh
+        //test
         public static async void Show(string content)
         {
             var dialog = new MessageDialog(content);
