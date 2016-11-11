@@ -1,0 +1,49 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:EventMaker.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModel="using:EventMaker.ViewModel"
+    x:Class="EventMaker.View.CreatEventPage"
+    mc:Ignorable="d">
+
+
+
+    <Page.DataContext>
+        <viewModel:EventViewModel/>
+    </Page.DataContext>
+
+
+    <Grid Background="AliceBlue">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition  Width="*"/>
+            <ColumnDefinition  Width="Auto"/>
+            <ColumnDefinition  Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Image Grid.Column="2" Grid.Row="0" Source="../Assets/event1.png"/>
+        <AppBarButton Grid.Row="0" Icon="Back" Label="Back" Click="ButtonBase_OnClick" Grid.Column="0"/>
+        <TextBlock Grid.Row="0" Grid.Column="1" Text="Create Event" Margin="0,30,0,0" FontWeight="Bold" FontSize="30" HorizontalAlignment="Center" />
+        <StackPanel Grid.Row ="1" Grid.Column="1"  >
+            <StackPanel Margin="0,0,0,20">
+                <TextBox Header="ID" Text="{Binding Id, Mode=TwoWay}" />
+                <TextBox Header="Event Name" Text="{Binding Name, Mode=TwoWay}" />
+                <TextBox Header="Location" Text="{Binding Place, Mode=TwoWay}"/>
+                <StackPanel Orientation="Horizontal">
+                    <DatePicker Header="Date" Margin="0,0,20,0" Date="{Binding Date, Mode=TwoWay}"/>
+                    <TimePicker Header="Time" Time="{Binding Time, Mode=TwoWay}" />
+                </StackPanel>
+                <TextBox Header="description" TextWrapping="Wrap" Height="130" Text="{Binding Description, Mode=TwoWay}" />
+
+            </StackPanel>
+            <AppBarButton x:Name="Add" Icon="Add" Label="Create Event" Click="Add_OnClick" BorderBrush="Gray" BorderThickness="10" HorizontalAlignment="Center" Command="{Binding CreateEventCommand}" />
+        </StackPanel>
+
+    </Grid>
+</Page>
